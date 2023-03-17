@@ -88,6 +88,7 @@ class EleventyDevServer {
   get watcher() {
     if(!this._watcher) {
       console.log("Watching %O", this.options.watch);
+      console.log("this.options %O", this.options);
       // TODO if using Eleventy and `watch` option includes output folder (_site) this will trigger two update events!
       this._watcher = chokidar.watch(this.options.watch, {
         // TODO allow chokidar configuration extensions (or re-use the ones in Eleventy)
