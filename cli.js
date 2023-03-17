@@ -44,6 +44,9 @@ Arguments:
        Run the web server on this port (default: \`8080\`)
        Will autoincrement if already in use.
 
+     --polling          (disabled, default)
+     --polling=true     (enabled)
+
      --domdiff          (enabled, default)
      --domdiff=false    (disabled)
        Apply HTML changes without a full page reload.
@@ -56,6 +59,7 @@ Arguments:
       port: "8080",
       input: ".",
       domDiff: true,
+      polling: false,
     }
   }
 
@@ -67,6 +71,7 @@ Arguments:
       showVersion: true,
       logger: Logger,
       domDiff: this.options.domDiff,
+      polling: this.options.polling,
 
       // CLI watches all files in the folder by default 
       // this is different from Eleventy usage!

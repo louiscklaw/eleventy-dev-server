@@ -28,6 +28,7 @@ try {
       "version",
       "help",
       "domdiff",
+      "polling"
     ],
     default: Cli.getDefaultOptions(),
     unknown: function (unknownArgument) {
@@ -57,6 +58,7 @@ try {
       input: argv.dir || argv.input,
       port: argv.port,
       domDiff: argv.domdiff,
+      polling: argv.polling
     });
 
     process.on("SIGINT", () => {

@@ -27,6 +27,7 @@ const DEFAULT_OPTIONS = {
   pathPrefix: "/",      // May be overridden by Eleventy, adds a virtual base directory to your project
   watch: [],            // Globs to pass to separate dev server chokidar for watching
   aliases: {},          // Aliasing feature
+  polling: false,        // default false for non windows-os
 
   // Logger (fancier one is injected by Eleventy)
   logger: {
@@ -71,6 +72,10 @@ class EleventyDevServer {
       this.options.domDiff = options.domdiff;
       delete this.options.domdiff;
     }
+    if(options.polling !== undefined) {
+      this.options.polling = options.polling;
+      // name were same so no need to delete
+    }
     if(options.enabled !== undefined) {
       this.options.liveReload = options.enabled;
       delete this.options.enabled;
@@ -94,6 +99,9 @@ class EleventyDevServer {
           stabilityThreshold: 150,
           pollInterval: 25,
         },
+
+        // add usePolling for using windows with docker
+        polling: this.options.polling
       });
 
       this._watcher.on("change", (path) => {
