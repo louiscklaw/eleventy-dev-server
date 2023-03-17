@@ -102,7 +102,9 @@ class EleventyDevServer {
         },
 
         // add usePolling for using windows with docker
-        alwaysStat: true
+        usePolling: true,
+        useFsEvents: true,
+        alwaysStat: true,
       });
 
       this._watcher.on("change", (path) => {
