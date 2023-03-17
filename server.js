@@ -73,6 +73,7 @@ class EleventyDevServer {
       delete this.options.domdiff;
     }
     if(options.polling !== undefined) {
+      console.log('polling mode: ', options.polling)
       this.options.polling = options.polling;
       // name were same so no need to delete
     }
